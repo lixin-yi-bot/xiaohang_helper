@@ -43,13 +43,12 @@ if st.button("提问"):
                     {"role": "user", "content": question},
                 ],
             }
-            start_time = time.time()
+            start = time.time()
             try:
                 # 3、加载思考动画spinner
                 with st.spinner("小航正在思考..."):
                   response = requests.post(API_URL, headers=HEADERS, json=data, timeout=30)  
-                end_time = time.time()
-                use_time = round(end_time - start_time, 1)
+                end = time.time()
 
                 if response.status_code == 401:
                     st.error("API Key 无效或已过期，请检查密钥")
@@ -60,8 +59,7 @@ if st.button("提问"):
                     answer = result["choices"][0]["message"]["content"]
                     st.write(answer)
                     # 6、显示字数+耗时元信息
-                    word_num = len(answer)
-                    st.caption(f"回答字数：{word_num} 字 · 耗时：{use_time} 秒")
+                    st.caption(f"回答字数：{len(answer)} 字 · 耗时：{end - start:.1f} 秒")
 
                     # 存入会话历史
                     item = {
