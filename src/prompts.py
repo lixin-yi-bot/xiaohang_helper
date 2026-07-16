@@ -17,13 +17,19 @@ ALIAS_DICT = """
 - "证明" "在读证明" ≈ 在校学籍证明
 """
 
+from pathlib import Path
+import glob
+
 def load_school_info():
-    md_files = sorted(Path("data").glob("*.md"))
+    data_path = Path("data")
+    all_content = ""
+    md_files = glob.glob(str(data_path / "*.md"))
     if not md_files:
-        return "[错误] 未找到数据文件，请检查 data/ 目录"
-    return "\n\n".join(
-        f"=== {f.name} ===\n{f.read_text(encoding='utf-8')}"
-        for f in md_files
+        return "[错误] 没有找到知识库文件"
+    for file in md_files:
+        with open(file, "r", encoding="utf-8") as f:
+            all_content += f.read() + "\n\n"
+    return all_content
     )
 
 def get_system_prompt(role, info):
