@@ -4,7 +4,7 @@ from pathlib import Path
 from prompts import load_school_info, get_system_prompt, get_preset_questions
 
 API_URL = "https://api.siliconflow.cn/v1/chat/completions"
-API_KEY = "sk-bqdcrddzypxqxrqkawufvkkffpndrtcaepbfclcnzhoxhryff"
+API_KEY = "sk-cjbipdwwtffwjblpqtwlbxroqufmrahtungkkfcwyabxwagy"
 HEADERS = {
     "Authorization": f"Bearer {API_KEY}",
     "Content-Type": "application/json",
