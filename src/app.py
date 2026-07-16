@@ -68,7 +68,9 @@ if st.button("提问"):
                         "time": time.strftime("%H:%M:%S"),
                         "role": role,
                         "question": question,
-                        "answer": answer
+                        "answer": answer,
+                        "word_num": word_num,
+                        "use_time": use_time
                     }
                     st.session_state["history"].append(item)
 
@@ -129,6 +131,8 @@ history_list = st.session_state["history"]
 for item in reversed(history_list):
     st.write(f'[{item["time"]}] {item["role"]} 提问：{item["question"]}')
     st.write(f"回答：{item['answer']}")
+    if "word_num" in item:
+        st.caption(f"回答字数：{item['word_num']} 字 · 耗时：{item['use_time']} 秒")
     st.caption("---")
 
 # ---------------------- 黄页兜底电话 ----------------------
