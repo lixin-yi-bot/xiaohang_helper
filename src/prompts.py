@@ -30,7 +30,6 @@ def load_school_info():
         with open(file, "r", encoding="utf-8") as f:
             all_content += f.read() + "\n\n"
     return all_content
-    )
 
 def get_system_prompt(role, info):
     return f"""你是郑州航院校园信息助手「小航」。
