@@ -81,31 +81,35 @@ if st.button("提问"):
 
 # ---------------------- 5、三大分类快捷提问Tabs ----------------------
 st.divider()
+st.subheader("快捷提问")
 tab1, tab2, tab3 = st.tabs(["新生指南", "办事流程", "应急防骗"])
-# 新生指南
+
 with tab1:
-    new_q = ["报到那天先去哪？", "学费什么时候交？", "宿舍几人间？", "军训准备啥？"]
-    cols = st.columns(2)
+    st.markdown("**新生常见问题：**")
+    new_q = ["报到那天先去哪？", "学费什么时候交？", "宿舍几人间？", "军训准备啥？", "宿舍怎么分配？", "校园卡怎么领？", "食堂在哪？", "图书馆怎么进？"]
+    cols = st.columns(4)
     for idx, q in enumerate(new_q):
-        with cols[idx % 2]:
+        with cols[idx % 4]:
             if st.button(q, key=f"new_{idx}"):
                 st.session_state["question"] = q
                 st.rerun()
-# 办事流程
+
 with tab2:
-    work_q = ["怎么补办校园卡？", "怎么申请请假？", "奖学金怎么申请？"]
-    cols = st.columns(2)
+    st.markdown("**办事流程问题：**")
+    work_q = ["怎么补办校园卡？", "怎么申请请假？", "奖学金怎么申请？", "怎么开在读证明？", "转专业怎么转？", "图书馆几点关？", "校园卡丢了怎么补？", "差旅怎么报销？"]
+    cols = st.columns(4)
     for idx, q in enumerate(work_q):
-        with cols[idx % 2]:
+        with cols[idx % 4]:
             if st.button(q, key=f"work_{idx}"):
                 st.session_state["question"] = q
                 st.rerun()
-# 应急防骗
+
 with tab3:
-    safe_q = ["冒充辅导员要钱怎么办？", "宿舍被盗找谁？", "电信诈骗怎么举报？"]
-    cols = st.columns(2)
+    st.markdown("**应急防骗问题：**")
+    safe_q = ["冒充辅导员要钱怎么办？", "宿舍被盗找谁？", "电信诈骗怎么举报？", "校园110是多少？", "心理危机找谁帮忙？", "火灾报警电话是多少？", "医疗急救电话是多少？", "遭遇诈骗怎么办？"]
+    cols = st.columns(4)
     for idx, q in enumerate(safe_q):
-        with cols[idx % 2]:
+        with cols[idx % 4]:
             if st.button(q, key=f"safe_{idx}"):
                 st.session_state["question"] = q
                 st.rerun()
